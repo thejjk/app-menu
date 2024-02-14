@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import Scrollbar from 'src/components/Scrollbar';
 import { SidebarContext } from 'src/contexts/SidebarContext';
 
@@ -23,37 +23,10 @@ const SidebarWrapper = styled(Box)(
 
 function Sidebar() {
   const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
+ 
+  const closeSidebar = () => toggleSidebar();
+ 
   const theme = useTheme();
-
-  const [tasks, updateTasks] = useState(false)
-
-  function emitEvent(name, data) {
-    dispatchEvent(new CustomEvent(name, {
-      detail: data,
-    }))
-  }
-
-  const toggleSidebarx = event => {
-    event.preventDefault()
-    emitEvent('@mc/react-route/todo/add-task', false)
-  };
-
-  const closeSidebar = (event) => {
-    updateTasks(!tasks)
-    toggleSidebarx(event)
-    toggleSidebar()
-  }
-
-
-  function listenEvent(name, cb) {
-    window.addEventListener(name, cb)
-  }
-
-    useEffect(() => {
-    listenEvent('@mc/react-route/todo/add-task', event => {
-      updateTasks(event.detail)
-    })
-  }, [])
 
 
   return (
@@ -106,8 +79,10 @@ function Sidebar() {
           boxShadow: `${theme.sidebar.boxShadow}`
         }}
         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-        open={tasks}
-        onClose={closeSidebar}
+        open={sidebarToggle}
+        onClose={() => {
+          closeSidebar()
+        }}
         variant="temporary"
         elevation={9}
       >
