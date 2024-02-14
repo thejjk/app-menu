@@ -5,6 +5,10 @@ import {
   useTheme
 } from '@mui/material';
 import type { ApexOptions } from 'apexcharts';
+import Bitcoun from 'src/assets/static/images/placeholders/logo/bitcoin.png';
+import Cardano from "src/assets/static/images/placeholders/logo/cardano.png";
+import Ethereum from "src/assets/static/images/placeholders/logo/ethereum.png";
+import Ripple from "src/assets/static/images/placeholders/logo/ripple.png";
 import Text from 'src/components/Text';
 
 const AvatarSuccess = styled(Avatar)(
@@ -207,7 +211,7 @@ function AccountBalance() {
                     <ListItemAvatarWrapper>
                       <img
                         alt="BTC"
-                        src="src/assets/static/images/placeholders/logo/bitcoin.png"
+                        src={Bitcoun}
                       />
                     </ListItemAvatarWrapper>
                     <ListItemText
@@ -230,7 +234,7 @@ function AccountBalance() {
                     <ListItemAvatarWrapper>
                       <img
                         alt="XRP"
-                        src="src/assets/static/images/placeholders/logo/ripple.png"
+                        src={Ripple}
                       />
                     </ListItemAvatarWrapper>
                     <ListItemText
@@ -253,7 +257,7 @@ function AccountBalance() {
                     <ListItemAvatarWrapper>
                       <img
                         alt="ADA"
-                        src="src/assets/static/images/placeholders/logo/cardano.png"
+                        src={Cardano}
                       />
                     </ListItemAvatarWrapper>
                     <ListItemText
@@ -276,7 +280,7 @@ function AccountBalance() {
                     <ListItemAvatarWrapper>
                       <img
                         alt="ETH"
-                        src="src/assets/static/images/placeholders/logo/ethereum.png"
+                        src={Ethereum}
                       />
                     </ListItemAvatarWrapper>
                     <ListItemText
